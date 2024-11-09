@@ -842,6 +842,8 @@ textarea {
     height: 100%;
     transition: .4s;
     z-index: 1;
+        cursor: pointer;
+
 }
 
 .project-box:hover.project-box::after,
