@@ -697,13 +697,15 @@ textarea {
 }
 
 .skills-header {
-    margin-bottom: 30px;
+    margin-bottom: 5px;
 }
 
 .skills-list {
     display: flex;
     flex-wrap: wrap;
     gap: 5px;
+    margin-bottom: 30px;
+
 }
 
 .skills-list span {
@@ -713,7 +715,6 @@ textarea {
     padding: 2px 10px;
     border-radius: 5px;
 }
-
 
 
 .project-container {
