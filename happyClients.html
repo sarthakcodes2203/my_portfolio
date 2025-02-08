@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>- Clients</title>
+
+    <style>
+      :root {
+        --body-color: radial-gradient(
+          circle,
+          rgba(70, 239, 252, 1) 0%,
+          rgba(208, 61, 183, 1) 49%,
+          rgba(51, 133, 163, 1) 100%
+        );
+        --color-white: #ffffff;
+        --text-color: #1189ff;
+        --card-bg: rgba(255, 255, 255, 0.1);
+        --shadow-color: rgba(255, 255, 255, 0.5);
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+      }
+      body {
+        background: var(--body-color);
+        color: var(--color-white);
+        text-align: center;
+        padding: 40px 20px;
+      }
+      h1 {
+        font-size: 2.5em;
+        margin-bottom: 20px;
+        font-weight: bold;
+      }
+      .clients-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+      }
+      .client-card {
+        width: 300px;
+        background: var(--card-bg);
+        padding: 20px;
+        border-radius: 15px;
+        box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s, box-shadow 0.3s;
+        backdrop-filter: blur(10px);
+        text-align: left;
+      }
+      .client-card:hover {
+        transform: scale(1.05);
+        box-shadow: 0px 10px 20px var(--shadow-color);
+      }
+      .client-img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 10px;
+      }
+      .client-name {
+        font-size: 1.5em;
+        font-weight: bold;
+        margin-top: 10px;
+      }
+      .client-feedback {
+        font-size: 1em;
+        margin-top: 10px;
+        color: rgba(0, 0, 0, 0.7);
+      }
+/* .clients-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.client-card {
+    width: 300px;
+    padding: 20px;
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.client-card:hover {
+    transform: translateY(-5px);
+}
+
+.client-img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+.client-name {
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.client-feedback {
+    font-style: italic;
+    font-size: 14px;
+    color: #555;
+} */
+    </style>
+  </head>
+  <body>
+    <h1>My Satisfied Clients</h1>
+    <!-- <div class="clients-container">
+        <div class="client-card">
+            <img src="assets/client1.JPG" alt="Client 1" class="client-img">
+            <div class="client-name">John Doe</div>
+            <div class="client-feedback">"Absolutely amazing service! The project exceeded expectations."</div>
+        </div>
+        <div class="client-card">
+            <img src="assets/client2.jpg" alt="Client 2" class="client-img">
+            <div class="client-name">Jane Smith</div>
+            <div class="client-feedback">"Professional and top-notch quality. Will collaborate again!"</div>
+        </div>
+        <div class="client-card">
+            <img src="assets/client3.jpg" alt="Client 3" class="client-img">
+            <div class="client-name">Mike Johnson</div>
+            <div class="client-feedback">"Delivered exactly what was promised, and even more!"</div>
+        </div>
+    </div> -->
+    <div class="clients-container" id="clients-container"></div>
+    <script>
+      const clients = [
+        {
+          name: "John Doe",
+          feedback:
+            "Absolutely amazing service! The project exceeded expectations.",
+          img: "assets/client1.JPG",
+        },
+        {
+          name: "Jane Smith",
+          feedback:
+            "Professional and top-notch quality. Will collaborate again!",
+          img: "assets/client2.jpg",
+        },
+        {
+          name: "Mike Johnson",
+          feedback: "Delivered exactly what was promised, and even more!",
+          img: "assets/client3.jpg",
+        },
+      ];
+
+      const clientsContainer = document.getElementById("clients-container");
+
+      clients.forEach((client) => {
+        const clientCard = document.createElement("div");
+        clientCard.classList.add("client-card");
+
+        clientCard.innerHTML = `
+                <img src="${client.img}" alt="${client.name}" class="client-img">
+                <div class="client-name">${client.name}</div>
+                <div class="client-feedback">"${client.feedback}"</div>
+            `;
+
+        clientsContainer.appendChild(clientCard);
+      });
+    </script>
+  </body>
+</html>
