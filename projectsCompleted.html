@@ -240,6 +240,77 @@
         top: 70px;
         transition: transform 0.2s ease-out;
       }
+
+/* Header */
+.marquee-header {
+  text-align: center;
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* Marquee Container */
+.marquee-container {
+  width: 100%;
+  overflow: hidden;
+  background: linear-gradient(to bottom, #cdcccc, #373636);
+  padding: 15px 0;
+  box-shadow: 0 -5px 10px rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+
+/* Marquee */
+.marquee {
+  display: flex;
+  gap: 20px;
+  white-space: nowrap;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Marquee Content */
+.marquee-content {
+  display: flex;
+  gap: 20px;
+  animation: marquee-scroll 12s linear infinite;
+}
+
+/* Marquee Images */
+.marquee-content img {
+  width: 180px; 
+  height: 100px;
+  border-radius: 12px;
+  object-fit: cover;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+  margin: 0 10px; 
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+
+}
+
+/* Zoom on Hover */
+.marquee-content img:hover {
+  transform: scale(1.2);
+  box-shadow: 0 10px 20px rgba(255, 255, 255, 0.3);
+}
+
+/* Marquee Animation */
+@keyframes marquee-scroll {
+  from {
+    transform: translateX(0%);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* Pause on Hover */
+.marquee-container:hover .marquee-content {
+  animation-play-state: paused;
+}
+
+
+
     </style>
   </head>
   <body>
@@ -273,7 +344,7 @@
     
       <div class="project-container">
         <div class="project-media">
-          <img id="videoThumbnail" src="assets/flutterToDoThumbnail.png" alt="Video Thumbnail" class="thumbnail">
+          <img id="videoThumbnail" src="assets/flutterToDoThumbnail.png" alt="Video Thumbnail" class="thumbnail" onclick="window.open('https://drive.google.com/drive/folders/1bfngKsyScXbx0tRpT5lJbI01WLmBYB6q?usp=sharing', '_blank')">
           <!-- <video id="videoPlayer" controls>
             <source src="assets/flutterToDo.mp4" type="video/mp4" />
             Your browser does not support the video tag.
@@ -290,7 +361,7 @@
 
       <div class="project-container">
         <div class="project-media">
-          <img id="videoThumbnail" src="assets/flutterDigvijayamThumbnail.png" alt="Video Thumbnail" class="thumbnail">
+          <img id="videoThumbnail" src="assets/flutterDigvijayamThumbnail.png" alt="Video Thumbnail" class="thumbnail" onclick="window.open('https://drive.google.com/drive/folders/1uTpbm7iQZHEJ-yMaB2KdW0GhdetzMVyi?usp=sharing', '_blank')">
           <!-- <video id="videoPlayer" controls>
             <source src="assets/flutterDigvijayam.mp4" type="video/mp4" />
             Your browser does not support the video tag.
@@ -317,6 +388,49 @@
           <button class="btn" onclick="window.location.href='https://github.com/sarthakcodes2203/Django/tree/main/todoProject'">View Project</button>
         </div>
       </div>
+
+      <!-- Header -->
+<h2 class="marquee-header">30 Days of UI Challenge</h2>
+
+<!-- Marquee Footer -->
+<footer class="marquee-container">
+  <div class="marquee">
+    <div class="marquee-content">
+    <img src="assets/in-01a.png" alt="Day 1">
+    <img src="assets/in-02a.png" alt="Day 2">
+    <img src="assets/in-03a.png" alt="Day 3">
+    <img src="assets/in-04a.png" alt="Day 4">
+    <img src="assets/in-05a.png" alt="Day 5">
+    <img src="assets/in-06a.png" alt="Day 6">
+    <img src="assets/in-07a.png" alt="Day 7">
+    <img src="assets/in-08a.png" alt="Day 8">
+    <img src="assets/in-09a.png" alt="Day 9">
+    <img src="assets/in-10a.png" alt="Day 10">
+    <img src="assets/in-11a.png" alt="Day 11">
+    <img src="assets/in-12a.png" alt="Day 12">
+    <img src="assets/in-13a.png" alt="Day 13">
+    <img src="assets/in-14a.png" alt="Day 14">
+    <img src="assets/in-15a.png" alt="Day 15">
+    <img src="assets/in-16a.png" alt="Day 16">
+    <img src="assets/in-17a.png" alt="Day 17">
+    <img src="assets/in-18a.png" alt="Day 18">
+    <img src="assets/in-19a.png" alt="Day 19">
+    <img src="assets/in-20a.png" alt="Day 20">
+    <img src="assets/in-21a.png" alt="Day 21">
+    <img src="assets/in-22a.png" alt="Day 22">
+    <img src="assets/in-23a.png" alt="Day 23">
+    <img src="assets/in-24a.png" alt="Day 24">
+    <img src="assets/in-25a.png" alt="Day 25">
+    <img src="assets/in-26a.png" alt="Day 26">
+    <img src="assets/in-27a.png" alt="Day 27">
+    <img src="assets/in-28a.png" alt="Day 28">
+    <img src="assets/in-29a.png" alt="Day 29">
+    <img src="assets/in-30a.png" alt="Day 30">
+    
+  </div>
+  </div>
+
+</footer>
 
     <script>
       //       document.addEventListener("mousemove", function (e) {
@@ -391,37 +505,6 @@
   //   thumbnail.style.display = "block"; // Show thumbnail when video ends
   // });
 
-
-  document.querySelectorAll('.project-media').forEach(media => {
-    const video = media.querySelector("video");
-    const thumbnail = media.querySelector(".thumbnail");
-
-    // When video starts playing, open image in a new tab and hide the thumbnail
-    video.addEventListener("play", function () {
-      if (!video.dataset.opened) {
-        video.dataset.opened = "true"; // Ensure it only opens once
-        window.open(thumbnail.src, "_blank");
-      }
-      thumbnail.style.display = "none"; // Hide thumbnail
-    });
-
-    // When video pauses or ends, show the thumbnail again
-    video.addEventListener("pause", function () {
-      thumbnail.style.display = "block";
-      video.dataset.opened = ""; // Reset for next play
-    });
-
-    video.addEventListener("ended", function () {
-      thumbnail.style.display = "block";
-      video.dataset.opened = ""; // Reset for next play
-    });
-
-    // Clicking the thumbnail should start the video, not open in a new tab
-    thumbnail.addEventListener("click", function () {
-      thumbnail.style.display = "none";
-      video.play();
-    });
-  });
   
     </script>
   </body>
