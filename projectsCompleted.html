@@ -340,70 +340,12 @@
       <!-- <div class="mouth"></div> -->
     </div>
 
-    <div class="projects-container">
+    <div class="projects-container" id="projects-container">
+      <!-- Dynamic Projects will be inserted here -->
+    </div>
 
-            <div class="project-container">
-        <div class="project-media">
-          <img id="videoThumbnail" src="assets/reactToDo.png" alt="Video Thumbnail" class="thumbnail" >
-        </div>
-        <div class="project-card">
-          <div class="project-title">To-Do Application</div>
-          <div class="project-description">
-            This <b>React</b>-based To-Do application provides full CRUD (Create, Read, Update, Delete) functionality, allowing users to efficiently manage their tasks. The app utilizes local storage to persist data, ensuring tasks remain saved even after a page refresh. Users can add, edit, and delete tasks effortlessly, with an intuitive interface designed for a smooth experience. Additionally, the app includes a toggle feature to hide or un-hide completed to-dos, helping users focus on pending tasks. This project highlights strong frontend development skills and emphasizes user-friendly design for effective task management.</div>
-          <button class="btn" onclick="window.location.href='https://github.com/sarthakcodes2203/Web-Development/tree/main/MERN/To-Do_react'">View Project</button>
-        </div>
-      </div>
-      
-      <div class="project-container">
-        <div class="project-media">
-          <img id="videoThumbnail" src="assets/flutterToDoThumbnail.png" alt="Video Thumbnail" class="thumbnail" onclick="window.open('https://drive.google.com/drive/folders/1bfngKsyScXbx0tRpT5lJbI01WLmBYB6q?usp=sharing', '_blank')">
-          <!-- <video id="videoPlayer" controls>
-            <source src="assets/flutterToDo.mp4" type="video/mp4" />
-            Your browser does not support the video tag.
-          </video> -->
-        </div>
-        <div class="project-card">
-          <div class="project-title">To-Do Application</div>
-          <div class="project-description">
-            This <b>Flutter</b>-based To-Do mobile application offers comprehensive CRUD (Create, Read, Update, Delete) functionality, allowing users to efficiently manage their tasks. The app includes user authentication features, enabling secure login and registration processes. Users can create accounts, log in to access their personalized task lists, and manage their to-dos with ease. The intuitive interface ensures a seamless user experience, making task management straightforward and efficient. This project demonstrates robust mobile development skills and a focus on user-centric design, leveraging Flutter's cross-platform capabilities to deliver a consistent experience on both iOS and Android devices.
-          </div>
-          <button class="btn" onclick="window.location.href='https://github.com/sarthakcodes2203/Flutter/tree/main/ToDo_app'">View Project</button>
-        </div>
-      </div>
 
-      <div class="project-container">
-        <div class="project-media">
-          <img id="videoThumbnail" src="assets/flutterDigvijayamThumbnail.png" alt="Video Thumbnail" class="thumbnail" onclick="window.open('https://drive.google.com/drive/folders/1uTpbm7iQZHEJ-yMaB2KdW0GhdetzMVyi?usp=sharing', '_blank')">
-          <!-- <video id="videoPlayer" controls>
-            <source src="assets/flutterDigvijayam.mp4" type="video/mp4" />
-            Your browser does not support the video tag.
-          </video> -->
-        </div>
-        <div class="project-card">
-          <div class="project-title">Medical Application</div>
-          <div class="project-description">
-            The <b>Flutter</b> based Medical Application is a cross-platform healthcare management system designed to streamline doctor appointments, medication purchases, and administrative tasks. Built with Flutter and Firebase, it offers secure user authentication, doctor categorization, and an intuitive appointment booking system with real-time availability tracking. Patients can search for doctors, book or cancel appointments, and order medications seamlessly. The app also features inventory management for medications, notifications for reminders, and report generation for administrators. Future enhancements like telemedicine integration, AI-based recommendations, and globalized healthcare access aim to further improve efficiency and accessibility in modern healthcare.
-          </div>
-          <button class="btn" onclick="window.location.href='https://github.com/sarthakcodes2203/Flutter/tree/main/Medical_app'">View Project</button>
-        </div>
-      </div>
-    
-      <div class="project-container">
-        <div class="project-media">
-          <img src="assets/djangoToDo.png" alt="Project 1" />
-        </div>
-        <div class="project-card">
-          <div class="project-title">To-Do Application</div>
-          <div class="project-description">
-            This <b>Django</b>-based To-Do application offers comprehensive CRUD (Create, Read, Update, Delete) functionality, allowing users to efficiently manage their tasks. The app includes user authentication features, enabling secure login and signup processes. Users can create accounts, log in to access their personalized task lists, and manage their to-dos with ease. The intuitive interface ensures a seamless user experience, making task management straightforward and efficient. This project demonstrates robust backend development skills and a focus on user-centric design.
-          </div>
-          <button class="btn" onclick="window.location.href='https://github.com/sarthakcodes2203/Django/tree/main/todoProject'">View Project</button>
-        </div>
-      </div>
-
-      <!-- Header -->
 <h2 class="marquee-header">30 Days of UI Challenge</h2>
-
 <!-- Marquee Footer -->
 <footer class="marquee-container">
   <div class="marquee">
@@ -519,5 +461,32 @@
 
   
     </script>
+
+<script>
+  fetch('projects.json')
+    .then(response => response.json())
+    .then(data => {
+      const container = document.getElementById('projects-container');
+
+      data.forEach(project => {
+        const projectElement = document.createElement('div');
+        projectElement.className = 'project-container';
+        projectElement.innerHTML = `
+          <div class="project-media">
+            <img src="${project.image}" alt="Project Thumbnail" class="thumbnail" onclick="window.open('${project.link}', '_blank')">
+          </div>
+          <div class="project-card">
+            <div class="project-title">${project.title}</div>
+            <div class="project-description">${project.description}</div>
+            <button class="btn" onclick="window.location.href='${project.link}'">View Project</button>
+          </div>
+        `;
+
+        container.appendChild(projectElement);
+      });
+    })
+    .catch(error => console.error('Error loading projects:', error));
+</script>
+
   </body>
 </html>
