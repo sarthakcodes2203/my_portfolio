@@ -1,0 +1,26 @@
+[
+    {
+      "title": "To-Do Application",
+      "description": "This React-based To-Do application provides full CRUD (Create, Read, Update, Delete) functionality, allowing users to efficiently manage their tasks. The app utilizes local storage to persist data, ensuring tasks remain saved even after a page refresh. Users can add, edit, and delete tasks effortlessly, with an intuitive interface designed for a smooth experience. Additionally, the app includes a toggle feature to hide or un-hide completed to-dos, helping users focus on pending tasks. This project highlights strong frontend development skills and emphasizes user-friendly design for effective task management.",
+      "image": "assets/reactToDo.png",
+      "link": "https://github.com/sarthakcodes2203/Web-Development/tree/main/MERN/To-Do_react"
+    },
+    {
+      "title": "To-Do Application",
+      "description": "This Flutter-based To-Do mobile application offers comprehensive CRUD (Create, Read, Update, Delete) functionality, allowing users to efficiently manage their tasks. The app includes user authentication features, enabling secure login and registration processes. Users can create accounts, log in to access their personalized task lists, and manage their to-dos with ease. The intuitive interface ensures a seamless user experience, making task management straightforward and efficient. This project demonstrates robust mobile development skills and a focus on user-centric design, leveraging Flutter's cross-platform capabilities to deliver a consistent experience on both iOS and Android devices.",
+      "image": "assets/flutterToDoThumbnail.png",
+      "link": "https://drive.google.com/drive/folders/1bfngKsyScXbx0tRpT5lJbI01WLmBYB6q?usp=sharing"
+    },
+    {
+      "title": "Medical Application",
+      "description": "The Flutter based Medical Application is a cross-platform healthcare management system designed to streamline doctor appointments, medication purchases, and administrative tasks. Built with Flutter and Firebase, it offers secure user authentication, doctor categorization, and an intuitive appointment booking system with real-time availability tracking. Patients can search for doctors, book or cancel appointments, and order medications seamlessly. The app also features inventory management for medications, notifications for reminders, and report generation for administrators. Future enhancements like telemedicine integration, AI-based recommendations, and globalized healthcare access aim to further improve efficiency and accessibility in modern healthcare.",
+      "image": "assets/flutterDigvijayamThumbnail.png",
+      "link": "https://drive.google.com/drive/folders/1uTpbm7iQZHEJ-yMaB2KdW0GhdetzMVyi?usp=sharing"
+    },
+    {
+      "title": "To-Do Application",
+      "description": "This Django-based To-Do application offers comprehensive CRUD (Create, Read, Update, Delete) functionality, allowing users to efficiently manage their tasks. The app includes user authentication features, enabling secure login and signup processes. Users can create accounts, log in to access their personalized task lists, and manage their to-dos with ease. The intuitive interface ensures a seamless user experience, making task management straightforward and efficient. This project demonstrates robust backend development skills and a focus on user-centric design.",
+      "image": "assets/djangoToDo.png",
+      "link": "https://github.com/sarthakcodes2203/Django/tree/main/todoProject"
+    }
+]
