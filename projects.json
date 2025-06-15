@@ -1,5 +1,11 @@
 [
     {
+    "title": "Food Ordering Website",
+    "description": "This ASP.NET-based Food Ordering System streamlines restaurant operations with full user and admin management, order tracking, and secure payment integration. Built using C#, SQL, and HTML/Bootstrap, it allows customers to register, browse menus, and place orders efficiently. The system enhances customer experience and restaurant productivity with real-time notifications, automated workflows, and comprehensive reporting tools. Future enhancements may include mobile app integration, AI-driven recommendations, and advanced analytics for better decision-making.",
+    "image": "assets/dotnetFOS.png",
+    "link": "https://github.com/sarthakcodes2203/Food-Ordering-System"
+    },
+    {
       "title": "To-Do Application",
       "description": "This React-based To-Do application provides full CRUD (Create, Read, Update, Delete) functionality, allowing users to efficiently manage their tasks. The app utilizes local storage to persist data, ensuring tasks remain saved even after a page refresh. Users can add, edit, and delete tasks effortlessly, with an intuitive interface designed for a smooth experience. Additionally, the app includes a toggle feature to hide or un-hide completed to-dos, helping users focus on pending tasks. This project highlights strong frontend development skills and emphasizes user-friendly design for effective task management.",
       "image": "assets/reactToDo.png",
