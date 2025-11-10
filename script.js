@@ -144,7 +144,7 @@ function myMenuFunction(){
 
   // <!-- By writing the cotent in a google sheet -->
     const scriptURL = 
-    'https://script.google.com/macros/s/AKfycbysAsrhGhVi0nlyGzkb5KXsP5vO-n6Jx37V7KyDc1ev9cmN4yTPRxmjPOONSnvXCdCK_Q/exec'
+    'https://script.google.com/macros/s/AKfycbxeOZwl2iKmKhzo6YUNzxhiUwy8vMGqeTHHPTo9xE_Q0BWmiHIpj1mWgGOLtIaz9zu74w/exec'
     const form = document.forms['google-sheet']
   
     form.addEventListener('submit', e => {
@@ -230,4 +230,5 @@ function myMenuFunction(){
 
 //     URL.revokeObjectURL(url);
 // }
+
 
