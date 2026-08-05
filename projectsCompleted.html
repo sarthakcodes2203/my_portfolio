@@ -3,490 +3,89 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>- Projects</title>
-    <!-- <link rel="stylesheet" href="styles.css" /> -->
-    <style>
-      :root {
-        --body-color: radial-gradient(
-          circle,
-          rgba(70, 239, 252, 1) 0%,
-          rgba(208, 61, 183, 1) 49%,
-          rgba(51, 133, 163, 1) 100%
-        );
-        --color-white: #ffffff;
-        --text-color-second: #1189ff;
-        --text-color-third: #1e9fab;
-        --first-color: #ffffff;
-        --first-color-hover: #285bd4;
-        --second-color: #6e57e0;
-        --third-color: #c0a631;
-        --first-shadow-color: rgba(0, 0, 0, 0.1);
-      }
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: "Poppins", sans-serif;
-      }
-      body {
-        background: var(--body-color);
-        color: var(--color-white);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: 40px 20px;
-      }
-      h1 {
-        font-size: 2.5em;
-        margin-bottom: 20px;
-        text-transform: uppercase;
-        font-weight: bold;
-      }
-      .projects-container {
-        width: 90%;
-        max-width: 1200px;
-      }
-      .project-card {
-        width: 45%;
-        background: rgba(255, 255, 255, 0.1);
-        color: var(--color-white);
-        border-radius: 15px;
-        padding: 20px;
-        box-shadow: 0px 6px 15px var(--first-shadow-color);
-        transition: transform 0.3s, box-shadow 0.3s, opacity 0.3s;
-        backdrop-filter: blur(10px);
-        opacity: 0.8;
-      }
-      .project-card:hover {
-        opacity: 1;
-        box-shadow: 0px 10px 20px rgba(255, 255, 255, 0.5);
-        transform: rotate(0deg);
-      }
-      .project-container {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        margin-bottom: 30px;
-      }
-      .project-container:nth-child(odd) .project-card {
-        transform: rotate(-3deg);
-      }
-      .project-container:nth-child(even) .project-card {
-        transform: rotate(3deg);
-      }
-      .project-container:hover .project-card {
-        transform: rotate(0deg);
-      }
-      .project-container:nth-child(even) {
-        flex-direction: row-reverse;
-      }
-      .project-media {
-        width: 50%;
-        height: 250px;
-        border-radius: 10px;
-        overflow: hidden;
-        position: relative;
-        transition: transform 0.3s;
-      }
-      .project-media:hover {
-        transform: scale(1.05);
-      }
-      /* .project-media video, */
-      .project-media img
-       {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: transform 0.3s, box-shadow 0.3s;
-      }
-      .project-media:hover img,
-      .project-media:hover video {
-        transform: scale(1.1);
-        box-shadow: 0px 10px 20px rgba(255, 255, 255, 0.5);
-        border-radius: 15px;
-      }
-      .project-title {
-        font-size: 1.8em;
-        font-weight: bold;
-        color: var(--second-color);
-        margin-bottom: 10px;
-        transition: opacity 0.3s, background 0.3s;
-        padding: 5px;
-      }
-      .project-title:hover {
-        opacity: 1;
-        background: rgba(255, 255, 255, 0.2);
-        border-radius: 5px;
-      }
-      .project-description {
-        font-size: 1.1em;
-        color: black;
-      }
-     
-     
-.project-media {
-    position: relative;
-    width: 100%;
-    max-width: 500px;
-  }
-
-  .thumbnail {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    cursor: pointer;
-    z-index: 2;
-  }
-
-  video {
-    width: 100%;
-  }
-
-
-      .btn {
-        display: inline-block;
-        margin-top: 15px;
-        padding: 10px 20px;
-        border: none;
-        border-radius: 25px;
-        background: var(--first-color-hover);
-        color: var(--color-white);
-        font-size: 1em;
-        text-transform: uppercase;
-        cursor: pointer;
-        transition: background 0.3s;
-      }
-      .btn:hover {
-        background: var(--second-color);
-      }
-
-      /* .eye-container {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    margin-top: 20px;
-}
-
-.eye {
-    width: 60px;
-    height: 40px;
-    background: white;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-}
-
-.pupil {
-    width: 18px;
-    height: 18px;
-    background: black;
-    border-radius: 50%;
-    position: absolute;
-    transition: transform 0.1s linear;
-} */
-      .eye-container {
-        display: flex;
-        justify-content: center;
-        gap: 25px;
-        margin-top: 20px;
-      }
-
-      .eye {
-        width: 65px;
-        height: 45px;
-        background: radial-gradient(circle at 50% 50%, #ffffff, #eeeeee);
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        position: relative;
-        box-shadow: inset 0 3px 8px rgba(0, 0, 0, 0.3),
-          0 4px 12px rgba(0, 0, 0, 0.5);
-        overflow: hidden;
-      }
-
-      .pupil {
-        width: 20px;
-        height: 20px;
-        background: radial-gradient(circle at 30% 30%, #222, #000);
-        border-radius: 50%;
-        position: absolute;
-        transition: transform 0.08s linear;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-
-      .glint {
-        width: 6px;
-        height: 6px;
-        background: white;
-        border-radius: 50%;
-        position: absolute;
-        top: 3px;
-        left: 3px;
-        opacity: 0.9;
-      }
-      .mouth {
-        width: 80px;
-        height: 30px;
-        border-radius: 50%;
-        border-bottom: 5px solid black;
-        position: absolute;
-        top: 70px;
-        transition: transform 0.2s ease-out;
-      }
-
-/* Header */
-.marquee-header {
-  text-align: center;
-  font-size: 28px;
-  font-weight: bold;
-  margin-bottom: 20px;
-  color: #333;
-}
-
-/* Marquee Container */
-.marquee-container {
-  width: 100%;
-  overflow: hidden;
-  background: linear-gradient(to bottom, #cdcccc, #373636);
-  padding: 15px 0;
-  box-shadow: 0 -5px 10px rgba(0, 0, 0, 0.2);
-  position: relative;
-}
-
-/* Marquee */
-.marquee {
-  display: flex;
-  gap: 20px;
-  white-space: nowrap;
-  overflow: hidden;
-  position: relative;
-}
-
-/* Marquee Content */
-.marquee-content {
-  display: flex;
-  gap: 20px;
-  animation: marquee-scroll 12s linear infinite;
-}
-
-/* Marquee Images */
-.marquee-content img {
-  width: 180px; 
-  height: 100px;
-  border-radius: 12px;
-  object-fit: cover;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
-  margin: 0 10px; 
-  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-
-}
-
-/* Zoom on Hover */
-.marquee-content img:hover {
-  transform: scale(1.2);
-  box-shadow: 0 10px 20px rgba(255, 255, 255, 0.3);
-}
-
-/* Marquee Animation */
-@keyframes marquee-scroll {
-  from {
-    transform: translateX(0%);
-  }
-  to {
-    transform: translateX(-50%);
-  }
-}
-
-/* Pause on Hover */
-.marquee-container:hover .marquee-content {
-  animation-play-state: paused;
-}
-
-
-
-    </style>
+    <title>Projects — SarthakCodes</title>
+    <link
+      rel="stylesheet"
+      href="https://unicons.iconscout.com/release/v4.0.8/css/line.css"
+    />
+    <link rel="stylesheet" href="styles.css?v=6" />
+    <link rel="icon" type="image/jpg" href="assets/icon3-circle.png" />
   </head>
-  <body>
-    <h1>My Projects</h1>
 
-    <!-- <div class="eye-container">
-        <div class="eye">
-            <div class="pupil"></div>
-        </div>
-        <div class="eye">
-            <div class="pupil"></div>
-        </div>
-    </div> -->
-    <div class="smiley">
-      <div class="eye-container">
-        <div class="eye">
-          <div class="pupil">
-            <div class="glint"></div>
-          </div>
-        </div>
-        <div class="eye">
-          <div class="pupil">
-            <div class="glint"></div>
-          </div>
-        </div>
+  <body>
+    <div id="scroll-progress"></div>
+
+    <header class="page-nav">
+      <div class="nav-logo">
+        <p class="nav-name">Sarthak<span>Codes</span>.</p>
       </div>
-      <!-- <div class="mouth"></div> -->
+      <a href="index.html" class="back-link">
+        <i class="uil uil-arrow-left"></i> Back to home
+      </a>
+    </header>
+
+    <div class="page-hero">
+      <span class="eyebrow">My Work</span>
+      <h1 class="page-title">Completed <span class="grad">Projects</span></h1>
+      <p class="page-sub">
+        A collection of web and mobile applications I've designed, built, and
+        shipped across different frameworks and platforms.
+      </p>
+
+      <div class="eye-wrap" aria-hidden="true">
+        <div class="eye"><div class="pupil"></div></div>
+        <div class="eye"><div class="pupil"></div></div>
+      </div>
     </div>
 
     <div class="projects-container" id="projects-container">
-      <!-- Dynamic Projects will be inserted here -->
+      <!-- Projects rendered from projects.json -->
     </div>
 
-
-<h2 class="marquee-header">30 Days of UI Challenge</h2>
-<!-- Marquee Footer -->
-<footer class="marquee-container">
-  <div class="marquee">
-    <div class="marquee-content">
-    <img src="assets/in-01a.png" alt="Day 1">
-    <img src="assets/in-02a.png" alt="Day 2">
-    <img src="assets/in-03a.png" alt="Day 3">
-    <img src="assets/in-04a.png" alt="Day 4">
-    <img src="assets/in-05a.png" alt="Day 5">
-    <img src="assets/in-06a.png" alt="Day 6">
-    <img src="assets/in-07a.png" alt="Day 7">
-    <img src="assets/in-08a.png" alt="Day 8">
-    <img src="assets/in-09a.png" alt="Day 9">
-    <img src="assets/in-10a.png" alt="Day 10">
-    <img src="assets/in-11a.png" alt="Day 11">
-    <img src="assets/in-12a.png" alt="Day 12">
-    <img src="assets/in-13a.png" alt="Day 13">
-    <img src="assets/in-14a.png" alt="Day 14">
-    <img src="assets/in-15a.png" alt="Day 15">
-    <img src="assets/in-16a.png" alt="Day 16">
-    <img src="assets/in-17a.png" alt="Day 17">
-    <img src="assets/in-18a.png" alt="Day 18">
-    <img src="assets/in-19a.png" alt="Day 19">
-    <img src="assets/in-20a.png" alt="Day 20">
-    <img src="assets/in-21a.png" alt="Day 21">
-    <img src="assets/in-22a.png" alt="Day 22">
-    <img src="assets/in-23a.png" alt="Day 23">
-    <img src="assets/in-24a.png" alt="Day 24">
-    <img src="assets/in-25a.png" alt="Day 25">
-    <img src="assets/in-26a.png" alt="Day 26">
-    <img src="assets/in-27a.png" alt="Day 27">
-    <img src="assets/in-28a.png" alt="Day 28">
-    <img src="assets/in-29a.png" alt="Day 29">
-    <img src="assets/in-30a.png" alt="Day 30">
-    
-  </div>
-  </div>
-
-</footer>
-
-    <script>
-      //       document.addEventListener("mousemove", function (e) {
-      //         let sparkle = document.createElement("div");
-      //         sparkle.className = "sparkle";
-      //         document.body.appendChild(sparkle);
-
-      //         sparkle.style.left = `${e.clientX}px`;
-      //         sparkle.style.top = `${e.clientY}px`;
-
-      //         setTimeout(() => {
-      //           sparkle.remove();
-      //         }, 500);
-      //       });
-
-      //       const style = document.createElement("style");
-      //       style.innerHTML = `
-      //     .sparkle {
-      //         position: fixed;
-      //         width: 5px;
-      //         height: 5px;
-      //         background: radial-gradient(circle, gold, rgba(255, 215, 0, 0.5));
-      //         border-radius: 50%;
-      //         pointer-events: none;
-      //         box-shadow: 0 0 5px rgba(255, 215, 0, 0.8);
-      //         animation: fade-out 0.5s ease-out;
-      //     }
-
-      //     @keyframes fade-out {
-      //         0% { transform: scale(1); opacity: 1; }
-      //         100% { transform: scale(2); opacity: 0; }
-      //     }
-      // `;
-      //       document.head.appendChild(style);
-
-      document.addEventListener("mousemove", (e) => {
-        document.querySelectorAll(".eye").forEach((eye) => {
-          const pupil = eye.querySelector(".pupil");
-          const eyeRect = eye.getBoundingClientRect();
-          const eyeX = eyeRect.left + eyeRect.width / 2;
-          const eyeY = eyeRect.top + eyeRect.height / 2;
-
-          const deltaX = e.clientX - eyeX;
-          const deltaY = e.clientY - eyeY;
-
-          const angle = Math.atan2(deltaY, deltaX);
-          const distance = Math.min(
-            12,
-            Math.sqrt(deltaX ** 2 + deltaY ** 2) / 6
-          );
-
-          pupil.style.transform = `translate(${Math.cos(angle) * distance}px, ${
-            Math.sin(angle) * distance
-          }px)`;
-        });
-      });
-
-
-  // const video = document.getElementById("videoPlayer");
-  // const thumbnail = document.getElementById("videoThumbnail");
-
-  // video.addEventListener("play", function() {
-  //   window.open("assets/flutterDigvijayam.mp4", "_blank"); // Open image in new tab
-  //   thumbnail.style.display = "none"; // Hide thumbnail
-  // });
-
-  // video.addEventListener("pause", function() {
-  //   thumbnail.style.display = "block"; // Show thumbnail when video is paused
-  // });
-
-  // video.addEventListener("ended", function() {
-  //   thumbnail.style.display = "block"; // Show thumbnail when video ends
-  // });
-
-  
-    </script>
-
-<script>
-  fetch('projects.json')
-    .then(response => response.json())
-    .then(data => {
-      const container = document.getElementById('projects-container');
-
-      data.forEach(project => {
-        const projectElement = document.createElement('div');
-        projectElement.className = 'project-container';
-        projectElement.innerHTML = `
-          <div class="project-media">
-            <img src="${project.image}" alt="Project Thumbnail" class="thumbnail" onclick="window.open('${project.link}', '_blank')">
+    <section class="marquee-section">
+      <h2 class="marquee-header">30 Days of <span class="grad">UI Challenge</span></h2>
+      <div class="marquee-container">
+        <div class="marquee">
+          <div class="marquee-content">
+            <img src="assets/in-01a.png" alt="Day 1" loading="lazy" />
+            <img src="assets/in-02a.png" alt="Day 2" loading="lazy" />
+            <img src="assets/in-03a.png" alt="Day 3" loading="lazy" />
+            <img src="assets/in-04a.png" alt="Day 4" loading="lazy" />
+            <img src="assets/in-05a.png" alt="Day 5" loading="lazy" />
+            <img src="assets/in-06a.png" alt="Day 6" loading="lazy" />
+            <img src="assets/in-07a.png" alt="Day 7" loading="lazy" />
+            <img src="assets/in-08a.png" alt="Day 8" loading="lazy" />
+            <img src="assets/in-09a.png" alt="Day 9" loading="lazy" />
+            <img src="assets/in-10a.png" alt="Day 10" loading="lazy" />
+            <img src="assets/in-11a.png" alt="Day 11" loading="lazy" />
+            <img src="assets/in-12a.png" alt="Day 12" loading="lazy" />
+            <img src="assets/in-13a.png" alt="Day 13" loading="lazy" />
+            <img src="assets/in-14a.png" alt="Day 14" loading="lazy" />
+            <img src="assets/in-15a.png" alt="Day 15" loading="lazy" />
+            <img src="assets/in-16a.png" alt="Day 16" loading="lazy" />
+            <img src="assets/in-17a.png" alt="Day 17" loading="lazy" />
+            <img src="assets/in-18a.png" alt="Day 18" loading="lazy" />
+            <img src="assets/in-19a.png" alt="Day 19" loading="lazy" />
+            <img src="assets/in-20a.png" alt="Day 20" loading="lazy" />
+            <img src="assets/in-21a.png" alt="Day 21" loading="lazy" />
+            <img src="assets/in-22a.png" alt="Day 22" loading="lazy" />
+            <img src="assets/in-23a.png" alt="Day 23" loading="lazy" />
+            <img src="assets/in-24a.png" alt="Day 24" loading="lazy" />
+            <img src="assets/in-25a.png" alt="Day 25" loading="lazy" />
+            <img src="assets/in-26a.png" alt="Day 26" loading="lazy" />
+            <img src="assets/in-27a.png" alt="Day 27" loading="lazy" />
+            <img src="assets/in-28a.png" alt="Day 28" loading="lazy" />
+            <img src="assets/in-29a.png" alt="Day 29" loading="lazy" />
+            <img src="assets/in-30a.png" alt="Day 30" loading="lazy" />
           </div>
-          <div class="project-card">
-            <div class="project-title">${project.title}</div>
-            <div class="project-description">${project.description}</div>
-            <button class="btn" onclick="window.location.href='${project.link}'">View Project</button>
-          </div>
-        `;
+        </div>
+      </div>
+    </section>
 
-        container.appendChild(projectElement);
-      });
-    })
-    .catch(error => console.error('Error loading projects:', error));
-</script>
+    <button id="back-to-top" aria-label="Back to top">
+      <i class="uil uil-arrow-up"></i>
+    </button>
 
+    <script src="script.js?v=6"></script>
   </body>
 </html>
