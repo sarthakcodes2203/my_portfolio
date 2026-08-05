@@ -24,13 +24,14 @@ function initMobileMenu() {
       menu.classList.remove("open");
       const icon = btn.querySelector("i");
       if (icon) icon.className = "uil uil-bars";
-    })
+    }),
   );
 }
 
 /* ----- 2. HEADER SHADOW + SCROLL PROGRESS + BACK-TO-TOP ----- */
 function initScrollEffects() {
-  const nav = document.getElementById("header") || document.querySelector("nav");
+  const nav =
+    document.getElementById("header") || document.querySelector("nav");
   const progress = document.getElementById("scroll-progress");
   const backToTop = document.getElementById("back-to-top");
 
@@ -57,7 +58,7 @@ function initScrollEffects() {
 
   if (backToTop) {
     backToTop.addEventListener("click", () =>
-      window.scrollTo({ top: 0, behavior: "smooth" })
+      window.scrollTo({ top: 0, behavior: "smooth" }),
     );
   }
 }
@@ -67,7 +68,7 @@ function initTyping() {
   const el = document.querySelector(".typedText");
   if (!el) return;
 
-  const words = ["Designer.", "Developer.", "Debugger.", "Data Analyst."];
+  const words = ["Designer.", "Developer.", "Data Analyst."];
   let wordIndex = 0;
   let charIndex = 0;
   let deleting = false;
@@ -97,7 +98,7 @@ let revealObserver = null;
 
 function initReveal() {
   const items = document.querySelectorAll(
-    ".reveal, .section-title, .eyebrow, .about-info, .skills-box, .project-box, .contact-info, .project-row, .client-card"
+    ".reveal, .section-title, .eyebrow, .about-info, .skills-box, .project-box, .contact-info, .project-row, .client-card",
   );
 
   if (!("IntersectionObserver" in window)) {
@@ -115,7 +116,7 @@ function initReveal() {
           }
         });
       },
-      { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
+      { threshold: 0.12, rootMargin: "0px 0px -40px 0px" },
     );
   }
 
@@ -190,33 +191,67 @@ function initContactForm() {
 
 /* ----- 7. PROJECTS PAGE: render from projects.json ----- */
 function initProjectsPage() {
-  const container = document.getElementById("projects-container");
-  if (!container) return;
+  const projectsContainer = document.getElementById("projects-container");
+  const challengeContainer = document.getElementById("challenge-container");
 
   fetch("projects.json")
-    .then((r) => r.json())
-    .then((projects) => {
-      container.innerHTML = projects
-        .map(
-          (p) => `
-          <article class="project-row reveal">
-            <div class="project-media" onclick="window.open('${p.link}', '_blank')">
-              <img src="${p.image}" alt="${p.title}" loading="lazy" />
-              <div class="play-hint"><i class="uil uil-arrow-up-right"></i></div>
-            </div>
-            <div class="project-card">
-              <h3 class="project-title">${p.title}</h3>
-              <p class="project-description">${p.description}</p>
-              <button class="btn btn-primary" onclick="window.open('${p.link}', '_blank')">
-                View Project <i class="uil uil-external-link-alt"></i>
-              </button>
-            </div>
-          </article>`
-        )
-        .join("");
+    .then((res) => res.json())
+    .then((data) => {
+      // ---------------- Projects ----------------
+      if (projectsContainer) {
+        projectsContainer.innerHTML = data.projects
+          .map(
+            (p) => `
+            <article class="project-row reveal">
+              <div class="project-media" onclick="window.open('${p.link}', '_blank')">
+                <img src="${p.image}" alt="${p.title}" loading="lazy">
+                <div class="play-hint">
+                  <i class="uil uil-arrow-up-right"></i>
+                </div>
+              </div>
+
+              <div class="project-card">
+                <h3 class="project-title">${p.title}</h3>
+                <p class="project-description">${p.description}</p>
+
+                <button
+                  class="btn btn-primary"
+                  onclick="window.open('${p.link}', '_blank')">
+
+                  View Project
+                  <i class="uil uil-external-link-alt"></i>
+
+                </button>
+              </div>
+            </article>
+          `,
+          )
+          .join("");
+      }
+
+      // ---------------- 30 Days Challenge ----------------
+      if (challengeContainer) {
+        challengeContainer.innerHTML = data.challengeDays
+          .map(
+            (item) => `
+            <a href="${item.link}"
+               target="_blank"
+               rel="noopener noreferrer">
+
+              <img
+                src="${item.image}"
+                alt="Day ${item.day}"
+                loading="lazy">
+
+            </a>
+          `,
+          )
+          .join("");
+      }
+
       initReveal();
     })
-    .catch((err) => console.error("Error loading projects:", err));
+    .catch((err) => console.error("Error loading JSON:", err));
 }
 
 /* ----- 8. CLIENTS PAGE: render clients ----- */
@@ -233,8 +268,7 @@ function initClientsPage() {
     },
     {
       name: "Jane Smith",
-      feedback:
-        "Professional and top-notch quality. Will collaborate again!",
+      feedback: "Professional and top-notch quality. Will collaborate again!",
       img: "assets/client2.jpg",
     },
     {
@@ -251,7 +285,7 @@ function initClientsPage() {
         <img src="${c.img}" alt="${c.name}" class="client-img" loading="lazy" />
         <h3 class="client-name">${c.name}</h3>
         <p class="client-feedback">${c.feedback}</p>
-      </article>`
+      </article>`,
     )
     .join("");
 
@@ -301,4 +335,3 @@ document.addEventListener("DOMContentLoaded", () => {
   initEyes();
   initMarquee();
 });
-
