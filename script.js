@@ -67,7 +67,7 @@ function initTyping() {
   const el = document.querySelector(".typedText");
   if (!el) return;
 
-  const words = ["Designer.", "Developer.", "Data Analyst."];
+  const words = ["Designer.", "Developer.", "Debugger.", "Data Analyst."];
   let wordIndex = 0;
   let charIndex = 0;
   let deleting = false;
