@@ -1,234 +1,304 @@
-/* ----- NAVIGATION BAR FUNCTION ----- */
-function myMenuFunction(){
-    let menuBtn = document.getElementById("myNavMenu");
-  
-    if(menuBtn.className === "nav-menu"){
-      menuBtn.className += " responsive";
-    } else {
-      menuBtn.className = "nav-menu";
-    }
-  }
+/* ============================================================
+   SarthakCodes Portfolio — shared vanilla JS
+   No external libraries needed.
+   ============================================================ */
 
+/* ----- 1. NAVIGATION: mobile menu toggle ----- */
+function initMobileMenu() {
+  const btn = document.getElementById("menuToggle");
+  const menu = document.getElementById("myNavMenu");
+  if (!btn || !menu) return;
 
-//   // Add this to your JavaScript file
-// const navMenuBtn = document.querySelector('.nav-menu-btn');
-// const navMenu = document.querySelector('.nav-menu');
-// navMenuBtn.addEventListener('click', () => {
-//   navMenu.classList.toggle('show');
-// });
+  const toggle = () => {
+    const isOpen = menu.classList.toggle("open");
+    const icon = btn.querySelector("i");
+    if (icon) icon.className = isOpen ? "uil uil-times" : "uil uil-bars";
+    btn.setAttribute("aria-expanded", isOpen ? "true" : "false");
+  };
 
+  btn.addEventListener("click", toggle);
 
-
-
-
-  
-  /* ----- ADD SHADOW ON NAVIGATION BAR WHILE SCROLLING ----- */
-  window.onscroll = function() {headerShadow()};
-  
-  function headerShadow() {
-    const navHeader =document.getElementById("header");
-  
-    if (document.body.scrollTop > 50 || document.documentElement.scrollTop >  50) {
-  
-      navHeader.style.boxShadow = "0 1px 6px rgba(0, 0, 0, 0.1)";
-      navHeader.style.height = "70px";
-      navHeader.style.lineHeight = "70px";
-  
-    } else {
-  
-      navHeader.style.boxShadow = "none";
-      navHeader.style.height = "90px";
-      navHeader.style.lineHeight = "90px";
-  
-    }
-  }
-  
-  /* ----- TYPING EFFECT ----- */
-  let typingEffect = new Typed(".typedText",{
-    strings : ["Designer.","Developer.","Analyst.","Entreprenuer."],
-    loop : true,
-    typeSpeed : 100,
-    backSpeed : 80,
-    backDelay : 2000
-  })
-  
-  /* ----- ## -- SCROLL REVEAL ANIMATION -- ## ----- */
-  const sr = ScrollReveal({
-        origin: 'top',
-        distance: '80px',
-        duration: 2000,
-        reset: true
-  })
-  
-  /* -- HOME -- */
-  sr.reveal('.featured-text-card',{})
-  sr.reveal('.featured-name',{delay: 100})
-  sr.reveal('.featured-text-info',{delay: 200})
-  sr.reveal('.featured-text-btn',{delay: 200})
-  sr.reveal('.social_icons',{delay: 200})
-  sr.reveal('.featured-image',{delay: 300})
-  
-  /* -- PROJECT BOX -- */
-  sr.reveal('.project-box',{interval: 200})
-  
-  /* -- HEADINGS -- */
-  sr.reveal('.top-header',{})
-  
-  /* ----- ## -- SCROLL REVEAL LEFT_RIGHT ANIMATION -- ## ----- */
-  
-  /* -- ABOUT INFO & CONTACT INFO -- */
-  const srLeft = ScrollReveal({
-  origin: 'left',
-  distance: '80px',
-  duration: 2000,
-  reset: true
-  })
-  
-  srLeft.reveal('.about-info',{delay: 100})
-  srLeft.reveal('.contact-info',{delay: 100})
-  
-  /* -- ABOUT SKILLS & FORM BOX -- */
-  const srRight = ScrollReveal({
-  origin: 'right',
-  distance: '80px',
-  duration: 2000,
-  reset: true
-  })
-  
-  srRight.reveal('.skills-box',{delay: 100})
-  srRight.reveal('.form-control',{delay: 100})
-  
-  /* ----- CHANGE ACTIVE LINK ----- */
-  
-  const sections = document.querySelectorAll('section[id]')
-  function scrollActive() {
-  const scrollY = window.scrollY;
-  
-  sections.forEach(current =>{
-    const sectionHeight = current.offsetHeight,
-        sectionTop = current.offsetTop - 50,
-      sectionId = current.getAttribute('id')
-  
-    if(scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-  
-        document.querySelector('.nav-menu a[href*=' + sectionId + ']').classList.add('active-link')
-  
-    }  else {
-  
-      document.querySelector('.nav-menu a[href*=' + sectionId + ']').classList.remove('active-link')
-  
-    }
-  })
-  }
-  
-  window.addEventListener('scroll', scrollActive)
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  // <!-- By writing the cotent in a google sheet -->
-    const scriptURL = 
-    'https://script.google.com/macros/s/AKfycbxeOZwl2iKmKhzo6YUNzxhiUwy8vMGqeTHHPTo9xE_Q0BWmiHIpj1mWgGOLtIaz9zu74w/exec'
-    const form = document.forms['google-sheet']
-  
-    form.addEventListener('submit', e => {
-      e.preventDefault()
-      fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-        .then(response => alert("Thanks for Contacting us..! We Will Contact You Soon..."))
-        .catch(error => console.error('Error!', error.message))
+  // close menu when a link is clicked
+  menu.querySelectorAll("a").forEach((a) =>
+    a.addEventListener("click", () => {
+      menu.classList.remove("open");
+      const icon = btn.querySelector("i");
+      if (icon) icon.className = "uil uil-bars";
     })
-    
-// For Extensions>Apps Script:-
+  );
+}
 
-// var sheetName = 'Sheet1'
-// 		var scriptProp = PropertiesService.getScriptProperties()
+/* ----- 2. HEADER SHADOW + SCROLL PROGRESS + BACK-TO-TOP ----- */
+function initScrollEffects() {
+  const nav = document.getElementById("header") || document.querySelector("nav");
+  const progress = document.getElementById("scroll-progress");
+  const backToTop = document.getElementById("back-to-top");
 
-// 		function intialSetup () {
-// 		  var activeSpreadsheet = SpreadsheetApp.getActiveSpreadsheet()
-// 		  scriptProp.setProperty('key', activeSpreadsheet.getId())
-// 		}
+  const onScroll = () => {
+    const y = window.scrollY || document.documentElement.scrollTop;
 
-// 		function doPost (e) {
-// 		  var lock = LockService.getScriptLock()
-// 		  lock.tryLock(10000)
+    if (nav && nav.classList && !nav.classList.contains("page-nav")) {
+      nav.classList.toggle("scrolled", y > 40);
+    }
 
-// 		  try {
-// 			var doc = SpreadsheetApp.openById(scriptProp.getProperty('key'))
-// 			var sheet = doc.getSheetByName(sheetName)
+    const doc = document.documentElement;
+    const max = doc.scrollHeight - window.innerHeight;
+    if (progress && max > 0) {
+      progress.style.width = `${(y / max) * 100}%`;
+    }
 
-// 			var headers = sheet.getRange(1, 1, 1, sheet.getLastColumn()).getValues()[0]
-// 			var nextRow = sheet.getLastRow() + 1
+    if (backToTop) {
+      backToTop.classList.toggle("visible", y > 420);
+    }
+  };
 
-// 			var newRow = headers.map(function(header) {
-// 			  return header === 'timestamp' ? new Date() : e.parameter[header]
-// 			})
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
 
-// 			sheet.getRange(nextRow, 1, 1, newRow.length).setValues([newRow])
+  if (backToTop) {
+    backToTop.addEventListener("click", () =>
+      window.scrollTo({ top: 0, behavior: "smooth" })
+    );
+  }
+}
 
-// 			return ContentService
-// 			  .createTextOutput(JSON.stringify({ 'result': 'success', 'row': nextRow }))
-// 			  .setMimeType(ContentService.MimeType.JSON)
-// 		  }
+/* ----- 3. TYPING EFFECT (vanilla) ----- */
+function initTyping() {
+  const el = document.querySelector(".typedText");
+  if (!el) return;
 
-// 		  catch (e) {
-// 			return ContentService
-// 			  .createTextOutput(JSON.stringify({ 'result': 'error', 'error': e }))
-// 			  .setMimeType(ContentService.MimeType.JSON)
-// 		  }
+  const words = ["Designer.", "Developer.", "Data Analyst."];
+  let wordIndex = 0;
+  let charIndex = 0;
+  let deleting = false;
 
-// 		  finally {
-// 			lock.releaseLock()
-// 		  }
-// 		}
+  const type = () => {
+    const word = words[wordIndex];
+    charIndex = deleting ? charIndex - 1 : charIndex + 1;
+    el.textContent = word.slice(0, charIndex);
 
+    let delay = deleting ? 45 : 95;
+    if (!deleting && charIndex === word.length) {
+      delay = 1600;
+      deleting = true;
+    } else if (deleting && charIndex === 0) {
+      deleting = false;
+      wordIndex = (wordIndex + 1) % words.length;
+      delay = 350;
+    }
+    setTimeout(type, delay);
+  };
 
+  type();
+}
 
+/* ----- 4. SCROLL REVEAL (IntersectionObserver, singleton) ----- */
+let revealObserver = null;
 
+function initReveal() {
+  const items = document.querySelectorAll(
+    ".reveal, .section-title, .eyebrow, .about-info, .skills-box, .project-box, .contact-info, .project-row, .client-card"
+  );
 
+  if (!("IntersectionObserver" in window)) {
+    items.forEach((el) => el.classList.add("revealed"));
+    return;
+  }
 
+  if (!revealObserver) {
+    revealObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("revealed");
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
+    );
+  }
 
+  items.forEach((el, i) => {
+    if (el.classList.contains("revealed")) return; // idempotent re-runs
+    el.classList.add("reveal");
+    el.style.transitionDelay = `${Math.min(i % 4, 3) * 60}ms`;
+    revealObserver.observe(el);
+  });
+}
 
+/* ----- 5. ACTIVE LINK HIGHLIGHTING ----- */
+function initActiveLinks() {
+  const sections = document.querySelectorAll("section[id]");
+  if (!sections.length) return;
 
+  const links = document.querySelectorAll(".nav-link");
+  const linkFor = (id) =>
+    [...links].find((l) => (l.getAttribute("href") || "").slice(1) === id);
 
+  const onScroll = () => {
+    const y = window.scrollY + 120;
+    let current = "";
+    sections.forEach((s) => {
+      if (y >= s.offsetTop) current = s.id;
+    });
+    links.forEach((l) => l.classList.remove("active-link"));
+    const active = linkFor(current);
+    if (active) active.classList.add("active-link");
+  };
 
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+}
 
+/* ----- 6. CONTACT FORM (Google Sheet) ----- */
+function initContactForm() {
+  const form = document.forms["google-sheet"];
+  if (!form) return;
 
+  const status = document.getElementById("form-status");
+  const submitBtn = form.querySelector('button[type="submit"]');
 
-// <!-- By Downloading a file in computer -->
-//   function handleSubmit(event) {
-//     event.preventDefault();
+  const scriptURL =
+    "https://docs.google.com/spreadsheets/d/1NUlyE39Gd8wzZumVo6MgTvmOgj8Gjip0e2e1ZtTosgk/edit?usp=sharing";
 
-//     const form = event.target;
-//     const name = form.name.value;
-//     const email = form.email.value;
-//     const message = form.message.value;
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    if (submitBtn) submitBtn.disabled = true;
 
-//     const fileContent = `Name: ${name}\nEmail: ${email}\nMessage: ${message}\n`;
-//     const blob = new Blob([fileContent], { type: 'text/plain' });
-//     const url = URL.createObjectURL(blob);
+    fetch(scriptURL, { method: "POST", body: new FormData(form) })
+      .then(() => {
+        form.reset();
+        if (status) {
+          status.classList.add("show");
+          status.innerHTML =
+            '<i class="uil uil-check-circle"></i> Thanks for reaching out — I\'ll get back to you soon!';
+          setTimeout(() => status.classList.remove("show"), 5000);
+        }
+      })
+      .catch((err) => {
+        console.error("Error!", err.message);
+        // graceful fallback: open the mail client
+        window.location.href =
+          "mailto:sarthak04.c@gmail.com?subject=Inquiries&body=Hey%20Sarthak!...";
+      })
+      .finally(() => {
+        if (submitBtn) submitBtn.disabled = false;
+      });
+  });
+}
 
-//     const a = document.createElement('a');
-//     a.href = url;
-//     a.download = `submission_${Date.now()}.txt`;
-//     a.click();
+/* ----- 7. PROJECTS PAGE: render from projects.json ----- */
+function initProjectsPage() {
+  const container = document.getElementById("projects-container");
+  if (!container) return;
 
-//     URL.revokeObjectURL(url);
-// }
+  fetch("projects.json")
+    .then((r) => r.json())
+    .then((projects) => {
+      container.innerHTML = projects
+        .map(
+          (p) => `
+          <article class="project-row reveal">
+            <div class="project-media" onclick="window.open('${p.link}', '_blank')">
+              <img src="${p.image}" alt="${p.title}" loading="lazy" />
+              <div class="play-hint"><i class="uil uil-arrow-up-right"></i></div>
+            </div>
+            <div class="project-card">
+              <h3 class="project-title">${p.title}</h3>
+              <p class="project-description">${p.description}</p>
+              <button class="btn btn-primary" onclick="window.open('${p.link}', '_blank')">
+                View Project <i class="uil uil-external-link-alt"></i>
+              </button>
+            </div>
+          </article>`
+        )
+        .join("");
+      initReveal();
+    })
+    .catch((err) => console.error("Error loading projects:", err));
+}
 
+/* ----- 8. CLIENTS PAGE: render clients ----- */
+function initClientsPage() {
+  const container = document.getElementById("clients-container");
+  if (!container) return;
+
+  const clients = [
+    {
+      name: "John Doe",
+      feedback:
+        "Absolutely amazing service! The project exceeded expectations.",
+      img: "assets/client1.JPG",
+    },
+    {
+      name: "Jane Smith",
+      feedback:
+        "Professional and top-notch quality. Will collaborate again!",
+      img: "assets/client2.jpg",
+    },
+    {
+      name: "Mike Johnson",
+      feedback: "Delivered exactly what was promised, and even more!",
+      img: "assets/client3.jpg",
+    },
+  ];
+
+  container.innerHTML = clients
+    .map(
+      (c) => `
+      <article class="client-card reveal">
+        <img src="${c.img}" alt="${c.name}" class="client-img" loading="lazy" />
+        <h3 class="client-name">${c.name}</h3>
+        <p class="client-feedback">${c.feedback}</p>
+      </article>`
+    )
+    .join("");
+
+  initReveal();
+}
+
+/* ----- 9. EYES THAT FOLLOW THE CURSOR (projects page) ----- */
+function initEyes() {
+  const eyes = document.querySelectorAll(".eye");
+  if (!eyes.length) return;
+
+  document.addEventListener("mousemove", (e) => {
+    eyes.forEach((eye) => {
+      const pupil = eye.querySelector(".pupil");
+      const rect = eye.getBoundingClientRect();
+      const cx = rect.left + rect.width / 2;
+      const cy = rect.top + rect.height / 2;
+      const angle = Math.atan2(e.clientY - cy, e.clientX - cx);
+      const dist = Math.min(7, Math.hypot(e.clientX - cx, e.clientY - cy) / 14);
+      pupil.style.transform = `translate(${Math.cos(angle) * dist}px, ${
+        Math.sin(angle) * dist
+      }px)`;
+    });
+  });
+}
+
+/* ----- 10. MARQUEE: duplicate content for a seamless loop ----- */
+function initMarquee() {
+  const marquee = document.querySelector(".marquee");
+  const content = document.querySelector(".marquee-content");
+  if (!marquee || !content) return;
+  const clone = content.cloneNode(true);
+  clone.setAttribute("aria-hidden", "true");
+  marquee.appendChild(clone);
+}
+
+/* ----- BOOT ----- */
+document.addEventListener("DOMContentLoaded", () => {
+  initMobileMenu();
+  initScrollEffects();
+  initTyping();
+  initReveal();
+  initActiveLinks();
+  initContactForm();
+  initProjectsPage();
+  initClientsPage();
+  initEyes();
+  initMarquee();
+});
 
